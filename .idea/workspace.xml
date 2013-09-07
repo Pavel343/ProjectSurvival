@@ -8,13 +8,14 @@
     <file path="/MyGame.java" changelist="1eef785e-89e7-4279-aa96-0753ca790110" time="1378046464729" ignored="false" />
     <file path="/TestScreen.java" changelist="1eef785e-89e7-4279-aa96-0753ca790110" time="1378456766692" ignored="false" />
     <file path="/fragment.java" changelist="1eef785e-89e7-4279-aa96-0753ca790110" time="1378046547242" ignored="false" />
-    <file path="/WorldRenderer.java" changelist="1eef785e-89e7-4279-aa96-0753ca790110" time="1378456927061" ignored="false" />
+    <file path="/WorldRenderer.java" changelist="1eef785e-89e7-4279-aa96-0753ca790110" time="1378544936299" ignored="false" />
     <file path="/World.java" changelist="1eef785e-89e7-4279-aa96-0753ca790110" time="1378455883400" ignored="false" />
     <file path="/ConstContainer.java" changelist="1eef785e-89e7-4279-aa96-0753ca790110" time="1378367976283" ignored="false" />
     <file path="/GameObject.java" changelist="1eef785e-89e7-4279-aa96-0753ca790110" time="1378458845559" ignored="false" />
     <file path="/Collider.java" changelist="1eef785e-89e7-4279-aa96-0753ca790110" time="1378370704537" ignored="false" />
     <file path="/WorldController.java" changelist="1eef785e-89e7-4279-aa96-0753ca790110" time="1378459570035" ignored="false" />
     <file path="/Creature.java" changelist="1eef785e-89e7-4279-aa96-0753ca790110" time="1378411229569" ignored="false" />
+    <file path="/a.dummy" changelist="1eef785e-89e7-4279-aa96-0753ca790110" time="1378541769690" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,9 +30,9 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -102,20 +103,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="World.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="World.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/game/World.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="74" selection-start="1135" selection-end="1135" vertical-scroll-proportion="0.831758">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WorldRenderer.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="WorldRenderer.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/game/WorldRenderer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="177" selection-start="1998" selection-end="1998" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="85" column="122" selection-start="3098" selection-end="3098" vertical-scroll-proportion="0.048433047">
+              <folding>
+                <element signature="method#WorldRenderer#0;class#WorldRenderer#0" expanded="false" />
+                <element signature="method#renderDebug#0;class#WorldRenderer#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -172,16 +176,18 @@
         <option value="$PROJECT_DIR$/src/game/Creature.java" />
         <option value="$PROJECT_DIR$/src/game/Main.java" />
         <option value="$PROJECT_DIR$/src/game/TestScreen.java" />
-        <option value="$PROJECT_DIR$/src/game/WorldRenderer.java" />
         <option value="$PROJECT_DIR$/src/game/GameObject.java" />
         <option value="$PROJECT_DIR$/src/game/WorldController.java" />
         <option value="$PROJECT_DIR$/src/game/World.java" />
+        <option value="$PROJECT_DIR$/src/game/WorldRenderer.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="683" />
-    <option name="height" value="768" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="754" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -211,6 +217,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -277,8 +285,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -399,16 +405,17 @@
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="683" height="768" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32996634" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3043478" sideWeight="0.6700337" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14318182" sideWeight="0.6700337" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3956229" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -417,7 +424,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32996634" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -493,7 +499,10 @@
     <entry file="file://$PROJECT_DIR$/src/game/WorldRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="79" selection-start="558" selection-end="558" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <element signature="method#WorldRenderer#0;class#WorldRenderer#0" expanded="false" />
+            <element signature="method#renderDebug#0;class#WorldRenderer#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -528,7 +537,10 @@
     <entry file="file://$PROJECT_DIR$/src/game/WorldRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="49" selection-start="94" selection-end="94" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <element signature="method#WorldRenderer#0;class#WorldRenderer#0" expanded="false" />
+            <element signature="method#renderDebug#0;class#WorldRenderer#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -574,13 +586,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/WorldRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="177" selection-start="1998" selection-end="1998" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/game/WorldController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="103" column="92" selection-start="3970" selection-end="3970" vertical-scroll-proportion="0.0">
@@ -590,8 +595,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/game/World.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="74" selection-start="1135" selection-end="1135" vertical-scroll-proportion="0.831758">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/WorldRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="85" column="122" selection-start="3098" selection-end="3098" vertical-scroll-proportion="0.048433047">
+          <folding>
+            <element signature="method#WorldRenderer#0;class#WorldRenderer#0" expanded="false" />
+            <element signature="method#renderDebug#0;class#WorldRenderer#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

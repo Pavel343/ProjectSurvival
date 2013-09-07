@@ -1,7 +1,9 @@
 package game;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -10,13 +12,26 @@ import com.badlogic.gdx.math.Rectangle;
 public class WorldRenderer {
 
     private World world;
-    private Texture text1,tree, hero;
+    private TextureRegion text1,tree, hero;
+
+    private TextureRegion[] walkFront;
+    private TextureRegion[] walkBack;
+    private TextureRegion[] walkLeft;
+    private TextureRegion[] walkRight;
+
+    private Animation walkAnimationFront;
+    private Animation walkAnimationBack;
+    private Animation walkAnimationLeft;
+    private Animation walkAnimationRight;
+
+    private TextureRegion walkSheet;
     ShapeRenderer debugRenderer = new ShapeRenderer();
     OrthographicCamera camera = new OrthographicCamera(800,480);
 
-    private Texture stayingLeft, stayingRight, stayingFront, stayingBack;
+    private TextureRegion stayingLeft, stayingRight, stayingFront, stayingBack;
 
     GameObject heroObject;
+    float stateTime=0f;
 
     public WorldRenderer(World world)
     {
@@ -25,8 +40,21 @@ public class WorldRenderer {
         heroObject = world.objects.get(0);
     }
 
+    TextureRegion currentFrameFront;
+    TextureRegion currentFrameBack;
+    TextureRegion currentFrameLeft;
+    TextureRegion currentFrameRight;
+
     public void render(SpriteBatch batch, float v)
     {
+        stateTime += Gdx.graphics.getDeltaTime();
+
+        currentFrameFront = walkAnimationFront.getKeyFrame(stateTime, true);
+        currentFrameBack = walkAnimationBack.getKeyFrame(stateTime, true);
+        currentFrameLeft = walkAnimationLeft.getKeyFrame(stateTime, true);
+        currentFrameRight = walkAnimationRight.getKeyFrame(stateTime, true);
+
+
         for (int i= 0; i<world.back_height;i++)
             for (int j=0; j<world.back_width;j++)
                 if(world.back[i][j]==1)
@@ -38,7 +66,7 @@ public class WorldRenderer {
         }
     }
 
-    public Texture getTextureByName(String name)
+    public TextureRegion getTextureByName(String name)
     {
         if(name.equals("Tree"))
             return tree;
@@ -46,13 +74,13 @@ public class WorldRenderer {
         {
             switch (heroObject.getDirection()){
                 case Front:
-                    return stayingFront;
+                    return heroObject.getAccelerationX()==0&&heroObject.getAccelerationY()==0?stayingFront:currentFrameFront;//stayingFront;
                 case Back:
-                    return stayingBack;
+                    return heroObject.getAccelerationX()==0&&heroObject.getAccelerationY()==0?stayingBack: currentFrameBack;
                 case Left:
-                    return stayingLeft;
+                    return heroObject.getAccelerationX()==0&&heroObject.getAccelerationY()==0?stayingLeft: currentFrameLeft;
                 case Right:
-                    return stayingRight;
+                    return heroObject.getAccelerationX()==0&&heroObject.getAccelerationY()==0?stayingRight:currentFrameRight;
             }
         }
 
@@ -77,13 +105,36 @@ public class WorldRenderer {
 
     public void loadTextures()
     {
-        text1 = new Texture("img/1.png");
-        hero = new Texture("img/hero.png");
-        tree = new Texture("img/tree.png");
-        stayingBack = new Texture("img/staying-back.png");
-        stayingFront = new Texture("img/staying-front.png");
-        stayingLeft = new Texture("img/staying-left.png");
-        stayingRight = new Texture("img/staying-right.png");
+        text1 = new TextureRegion(new Texture("img/1.png"));
+        hero = new TextureRegion(new Texture("img/hero.png"));
+        tree = new TextureRegion(new Texture("img/tree.png"));
+
+        walkFront = new TextureRegion[4];
+        walkFront[0] = new TextureRegion(new Texture("img/walking-front0.png"));
+        walkFront[1] = new TextureRegion(new Texture("img/walking-front1.png"));
+        walkFront[2] = new TextureRegion(new Texture("img/walking-front2.png"));
+        walkFront[3] = new TextureRegion(new Texture("img/walking-front3.png"));
+
+        walkBack = new TextureRegion[4];
+        for(int i=0;i<4;i++)
+            walkBack[i] = new TextureRegion(new Texture("img/walking-back"+i+".png"));
+        walkLeft = new TextureRegion[4];
+        for(int i=0;i<4;i++)
+            walkLeft[i] = new TextureRegion(new Texture("img/walking-left"+i+".png"));
+        walkRight = new TextureRegion[4];
+        for(int i=0;i<4;i++)
+            walkRight[i] = new TextureRegion(new Texture("img/walking-right"+i+".png"));
+
+        walkAnimationFront = new Animation(0.1f, walkFront);
+        walkAnimationBack = new Animation(0.1f, walkBack);
+        walkAnimationLeft = new Animation(0.1f, walkLeft);
+        walkAnimationRight = new Animation(0.1f, walkRight);
+
+
+        stayingBack = new TextureRegion(new Texture("img/staying-back.png"));
+        stayingFront = new TextureRegion(new Texture("img/staying-front.png"));
+        stayingLeft = new TextureRegion(new Texture("img/staying-left.png"));
+        stayingRight = new TextureRegion(new Texture("img/staying-right.png"));
 
     }
 }
