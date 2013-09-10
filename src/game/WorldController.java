@@ -9,10 +9,13 @@ import java.util.LinkedList;
 public class WorldController {
     World world;
     boolean xChanged=false, yChanged=false;
+    boolean xChanged2=false, yChanged2=false;
     GameObject hero;
+    GameObject hero2;
     public WorldController(World world) {
         this.world = world;
         hero = world.objects.get(0);
+        hero2 = world.objects.get(1);
     }
 
     public void update()
@@ -26,6 +29,7 @@ public class WorldController {
     private void inputCheck() {
         xChanged = false;
         yChanged = false;
+
 
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
             hero.setAccelerationX(5);
@@ -53,6 +57,33 @@ public class WorldController {
         }
         if(!yChanged)hero.setAccelerationY(0);
         if(!xChanged)hero.setAccelerationX(0);
+
+        if (Gdx.input.isKeyPressed(Input.Keys.D)){
+            hero2.setAccelerationX(5);
+            hero2.setDirection(GameObject.Direction.Right);
+            xChanged2=true;
+        }
+
+        if (Gdx.input.isKeyPressed(Input.Keys.A))
+        {
+            hero2.setAccelerationX(-5);
+            hero2.setDirection(GameObject.Direction.Left);
+            xChanged2 = true;
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.W))
+        {
+            hero2.setAccelerationY(5);
+            hero2.setDirection(GameObject.Direction.Back);
+            yChanged2 = true;
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.S))
+        {
+            hero2.setAccelerationY(-5);
+            hero2.setDirection(GameObject.Direction.Front);
+            yChanged2 = true;
+        }
+        if(!yChanged2)hero2.setAccelerationY(0);
+        if(!xChanged2)hero2.setAccelerationX(0);
     }
 
     private void collisionsCheck()
@@ -97,7 +128,14 @@ public class WorldController {
         world.changed=false;
         for(GameObject object: world.objects)
         {
-            if(object.getAccelerationY()!=0 || object.getAccelerationX()!=0)world.changed=true;
+            //object.setState(GameObject.State.Staying);
+            if(object.getAccelerationY()!=0 || object.getAccelerationX()!=0){
+                world.changed=true;
+                object.setState(GameObject.State.Running);
+                System.out.println("Двинулся!");}
+            else
+            object.setState(GameObject.State.Staying);
+
             object.setX(object.getX()+object.getAccelerationX());
             object.setY(object.getY() + object.getAccelerationY());
             object.getCollider().setX(object.getCollider().getX()+object.getAccelerationX());

@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.lwjgl.input.Keyboard;
 
 public class TestScreen implements Screen {
-    WorldRenderer worldRenderer;
+    WorldRendererNew worldRenderer;
     WorldController worldController;
     SpriteBatch batch = new SpriteBatch();
 
@@ -32,7 +32,7 @@ public class TestScreen implements Screen {
     @Override
     public void show() {
         World world = new World();
-        worldRenderer = new WorldRenderer(world);
+        worldRenderer = new WorldRendererNew(world);
         worldController = new WorldController(world);
         worldRenderer.loadTextures();
 

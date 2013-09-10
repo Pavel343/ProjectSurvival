@@ -9,7 +9,10 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 
-public class WorldRenderer {
+import java.util.HashMap;
+import java.util.Map;
+
+public class WorldRendererNew {
 
     private World world;
     private TextureRegion text1,tree, hero;
@@ -18,12 +21,15 @@ public class WorldRenderer {
     ShapeRenderer debugRenderer = new ShapeRenderer();
     OrthographicCamera camera = new OrthographicCamera(800,480);
 
+    private Map<String,Animation> animationMap = new HashMap<String, Animation>();
+    private Map<String,TextureRegion> texturesMap = new HashMap<String, TextureRegion>();
+
     private TextureRegion stayingLeft, stayingRight, stayingFront, stayingBack;
 
     Hero heroObject;
     float stateTime=0f;
 
-    public WorldRenderer(World world)
+    public WorldRendererNew(World world)
     {
         this.world = world;
         heroObject = (Hero)world.objects.get(0);
@@ -38,9 +44,6 @@ public class WorldRenderer {
 
         stateTime += Gdx.graphics.getDeltaTime();
 
-
-
-
         for (int i= 0; i<world.back_height;i++)
             for (int j=0; j<world.back_width;j++)
                 if(world.back[i][j]==1)
@@ -48,36 +51,17 @@ public class WorldRenderer {
 
         for(GameObject object : world.objects)
         {
-            if(object.getName().equals("Hero"))
+            /*if(object.getName().equals("Hero"))
             ((Hero)object).updateCurrFrame(stateTime);
             else
-                object.updateCurrFrame(stateTime);
-            batch.draw(getTextureByName(object.getName()), object.getX(), object.getY(), object.getWidth(), object.getHeight());
+                object.updateCurrFrame(stateTime);*/
+            batch.draw(getTextureByName(object), object.getX(), object.getY(), object.getWidth(), object.getHeight());
         }
     }
 
-    public TextureRegion getTextureByName(String name)
+    public TextureRegion getTextureByName(GameObject object)
     {
-        if(name.equals("Tree"))
-            return tree;
-        if(name.equals("Hero"))
-        {
-            System.out.println("=============================================  "+GameObject.State.Staying.toString());
-            return heroObject.getCurrFrame();
-            /*switch (heroObject.getDirection()){
-                case Front:
-                    return heroObject.getAccelerationX()==0&&heroObject.getAccelerationY()==0?stayingFront:currentFrameFront;//stayingFront;
-                case Back:
-                    return heroObject.getAccelerationX()==0&&heroObject.getAccelerationY()==0?stayingBack: currentFrameBack;
-                case Left:
-                    return heroObject.getAccelerationX()==0&&heroObject.getAccelerationY()==0?stayingLeft: currentFrameLeft;
-                case Right:
-                    return heroObject.getAccelerationX()==0&&heroObject.getAccelerationY()==0?stayingRight:currentFrameRight;
-            }*/
-        }
-
-
-        return null;
+         return object.getState().Animated(object.getState())?((Animation)animationMap.get(object.getName()+"-"+object.getState().toString()+"-"+object.getDirection())).getKeyFrame(stateTime+object.seed):(TextureRegion)texturesMap.get(object.getName()+"-"+object.getState().toString()+"-"+object.getDirection());
     }
 
     public void renderDebug()
@@ -97,9 +81,18 @@ public class WorldRenderer {
 
     public void loadTextures()
     {
+
+        //TODO залить в animations анимации
+        //TODO залить в textures текстуры
+
+
+
         text1 = new TextureRegion(new Texture("img/1.png"));
         hero = new TextureRegion(new Texture("img/hero.png"));
         tree = new TextureRegion(new Texture("img/tree.png"));
+
+
+
 
         heroObject.walkFront = new TextureRegion[4];
         heroObject.walkFront[0] = new TextureRegion(new Texture("img/walking-front0.png"));
@@ -128,7 +121,16 @@ public class WorldRenderer {
         heroObject.stayingLeft = new TextureRegion(new Texture("img/staying-left.png"));
         heroObject.stayingRight = new TextureRegion(new Texture("img/staying-right.png"));
 
+        texturesMap.put("Tree-Staying-Front",tree);
+        texturesMap.put("Hero-Staying-Front",heroObject.stayingFront);
+        texturesMap.put("Hero-Staying-Back",heroObject.stayingBack);
+        texturesMap.put("Hero-Staying-Left",heroObject.stayingLeft);
+        texturesMap.put("Hero-Staying-Right",heroObject.stayingRight);
 
+        animationMap.put("Hero-Running-Front",heroObject.walkAnimationFront);
+        animationMap.put("Hero-Running-Back",heroObject.walkAnimationBack);
+        animationMap.put("Hero-Running-Left",heroObject.walkAnimationLeft);
+        animationMap.put("Hero-Running-Right",heroObject.walkAnimationRight);
 
     }
 }

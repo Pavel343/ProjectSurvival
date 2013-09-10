@@ -1,13 +1,24 @@
 package game;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class GameObject {
     private String name;
     private int x, y, width, height, accelerationX = 0, accelerationY=0;
     private Collider collider;
+    public TextureRegion currFrame;
+    public float seed;
+
+
+    public void updateCurrFrame(float stateTime)
+    {
+
+    }
 
     public GameObject(String name, int x, int y, int width, int height, Collider collider) {
+        seed = Gdx.graphics.getDeltaTime();
         this.name = name;
         this.x = x;
         this.y = y;
@@ -16,6 +27,10 @@ public class GameObject {
         this.collider = collider;
     }
 
+
+    public TextureRegion getCurrFrame() {
+        return currFrame;
+    }
 
     public String getName() {
         return name;
@@ -65,13 +80,12 @@ public class GameObject {
         return height;
     }
 
-
     public Collider getCollider() {
         return collider;
     }
 
     private State state =  State.Staying;
-    private Direction direction = Direction.Front;
+    protected Direction direction = Direction.Front;
 
     public State getState() {
         return state;
@@ -79,6 +93,7 @@ public class GameObject {
 
     public void setState(State state) {
         this.state = state;
+        System.out.println(name+"||"+state);
     }
 
     public Direction getDirection() {
@@ -90,10 +105,32 @@ public class GameObject {
     }
 
     public enum State{
-        Staying, Running, Attacking
+        Staying, Running, Attacking;
+        public boolean Animated(State state)
+        {
+            switch (state)
+            {
+                case Staying:
+                    return false;
+                case Running:
+                    return true;
+                case Attacking:
+                    return true;
+            }
+            return false;
+        }
     }
 
     public enum Direction{
         Left, Right, Front, Back
+    }
+
+    public TextureRegion getTexture(){
+        return currFrame;
+        //TODO сделать возвращение текстуры
+    }
+
+    public void updateTexture(){
+        //TODO сделать обновление текстуры
     }
 }
