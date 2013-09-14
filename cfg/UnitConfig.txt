@@ -1,0 +1,9 @@
+Begin
+name:Hero
+width:64
+height:64
+colx:0
+coly:0
+colwidth:130
+colheight:100
+img:img/staying-front.png

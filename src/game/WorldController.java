@@ -2,7 +2,7 @@ package game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.sun.javafx.scene.control.skin.TableHeaderRow;
+import game.objects.GameObject;
 
 import java.util.LinkedList;
 

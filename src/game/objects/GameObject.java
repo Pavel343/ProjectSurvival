@@ -1,21 +1,16 @@
-package game;
+package game.objects;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import game.Collider;
 
-public class GameObject {
+public abstract class GameObject {
     private String name;
     private int x, y, width, height, accelerationX = 0, accelerationY=0;
     private Collider collider;
     public TextureRegion currFrame;
     public float seed;
-
-
-    public void updateCurrFrame(float stateTime)
-    {
-
-    }
 
     public GameObject(String name, int x, int y, int width, int height, Collider collider) {
         seed = Gdx.graphics.getDeltaTime();
@@ -26,6 +21,8 @@ public class GameObject {
         this.height = height;
         this.collider = collider;
     }
+
+    public abstract void updateCurrFrame(float stateFrame);
 
 
     public TextureRegion getCurrFrame() {

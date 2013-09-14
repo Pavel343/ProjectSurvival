@@ -1,10 +1,11 @@
-package game;
+package game.objects;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.sun.org.apache.bcel.internal.generic.BREAKPOINT;
+import game.Collider;
+import game.objects.GameObject;
 
-public class Hero  extends  GameObject{
+public class Hero  extends GameObject {
 
     public TextureRegion stayingFront;
     public TextureRegion stayingBack;

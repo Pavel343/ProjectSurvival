@@ -1,0 +1,6 @@
+width:4810
+height:800
+unitConfig:cfg/UnitConfig.txt
+objectConfig:cfg/ObjectConfig.txt
+animationConfig:cfg/AnimationConfig.txt
+textureConfig:cfg/TextureConfig.txt

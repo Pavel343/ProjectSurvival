@@ -8,6 +8,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
+import game.objects.Creature;
+import game.objects.GameObject;
+import game.objects.Hero;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,13 +29,13 @@ public class WorldRendererNew {
 
     private TextureRegion stayingLeft, stayingRight, stayingFront, stayingBack;
 
-    Hero heroObject;
+    Creature heroObject;
     float stateTime=0f;
 
     public WorldRendererNew(World world)
     {
         this.world = world;
-        heroObject = (Hero)world.objects.get(0);
+        heroObject = (Creature)world.objects.get(0);
         loadTextures();
 
     }
@@ -47,21 +50,24 @@ public class WorldRendererNew {
         for (int i= 0; i<world.back_height;i++)
             for (int j=0; j<world.back_width;j++)
                 if(world.back[i][j]==1)
-                    batch.draw(text1, world.size*j, world.size*i, world.size, world.size);
+                {
+                    batch.draw(ConstContainer.mainGuardian.getMultimediaContainer().getTexture("back-cell"), world.size*j, world.size*i, world.size, world.size);
 
+                }
         for(GameObject object : world.objects)
         {
             /*if(object.getName().equals("Hero"))
             ((Hero)object).updateCurrFrame(stateTime);
             else
                 object.updateCurrFrame(stateTime);*/
+            System.out.println(object.getName()+"ololo"+object.getState()+object.getDirection());
             batch.draw(getTextureByName(object), object.getX(), object.getY(), object.getWidth(), object.getHeight());
         }
     }
 
     public TextureRegion getTextureByName(GameObject object)
     {
-         return object.getState().Animated(object.getState())?((Animation)animationMap.get(object.getName()+"-"+object.getState().toString()+"-"+object.getDirection())).getKeyFrame(stateTime+object.seed):(TextureRegion)texturesMap.get(object.getName()+"-"+object.getState().toString()+"-"+object.getDirection());
+         return object.getState().Animated(object.getState())?((Animation)animationMap.get(object.getName()+"-"+object.getState().toString()+"-"+object.getDirection())).getKeyFrame(stateTime+object.seed,true):(TextureRegion)texturesMap.get(object.getName()+"-"+object.getState().toString()+"-"+object.getDirection());
     }
 
     public void renderDebug()
@@ -84,6 +90,12 @@ public class WorldRendererNew {
 
         //TODO залить в animations анимации
         //TODO залить в textures текстуры
+          this.animationMap = ConstContainer.mainGuardian.getMultimediaContainer().getAnimations();
+          this.texturesMap = ConstContainer.mainGuardian.getMultimediaContainer().getTextureRegions();
+           /*
+
+
+
 
 
 
@@ -131,6 +143,7 @@ public class WorldRendererNew {
         animationMap.put("Hero-Running-Back",heroObject.walkAnimationBack);
         animationMap.put("Hero-Running-Left",heroObject.walkAnimationLeft);
         animationMap.put("Hero-Running-Right",heroObject.walkAnimationRight);
+        */
 
     }
 }

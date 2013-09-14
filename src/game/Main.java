@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.Texture;
 
 public class Main {
     public static void main(String[] args) {
+
+
         Texture.setEnforcePotImages(false);
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
         config.width = 800;

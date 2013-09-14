@@ -1,8 +1,9 @@
 package game;
 
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import game.objects.Creature;
+import game.objects.GameObject;
+import game.objects.Hero;
+import game.objects.MapObject;
 
 import java.util.LinkedList;
 
@@ -31,11 +32,13 @@ public class World {
             for (int j=0; j<back_width;j++)
                 back[i][j] = 1;
 
+        objects.add((Creature)ConstContainer.configLoader.getMainGuardian().getCreatureGuardian().create("Hero", 150,150));
+
         objects.add(new Hero("Hero",10,100,32,32, new Collider(10,100,32,10)));
         objects.add(new Hero("Hero",10,10,32,32, new Collider(9,10,32,10)));
 
-        objects.add(new GameObject("Tree",200,100,64,105, new Collider(216,100,32,32)));
-        objects.add(new GameObject("Tree",300,100,64,105, new Collider(316,100,32,32)));
-        objects.add(new GameObject("Tree",350,190,64,105, new Collider(362,190,32,32)));
+        objects.add(new MapObject("Tree",200,100,64,105, new Collider(216,100,32,32)));
+        objects.add(new MapObject("Tree",300,100,64,105, new Collider(316,100,32,32)));
+        objects.add(new MapObject("Tree",350,190,64,105, new Collider(362,190,32,32)));
     }
 }
